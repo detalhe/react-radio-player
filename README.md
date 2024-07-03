@@ -6,11 +6,13 @@
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-A modern, responsive web radio player built with React, Vite, and Tailwind CSS. 
+A modern, responsive web radio player for Zeno.fm stations, built with React, Vite, and styled with Tailwind CSS.
 
 ![React Radio Player UI](https://i.ibb.co/BtsMxX9/localhost-5173-2.png)
 
-Demo: [reactradio.netlify.app](https://reactradio.netlify.app)
+<a href="https://react-radio-demo.netlify.app/" target="_blank">
+  <img src="https://img.shields.io/badge/LIVE-DEMO-brightgreen?style=for-the-badge&logo=netlify&logoColor=white&labelColor=000000" alt="Live Demo" />
+</a>
 
 </div>
 
