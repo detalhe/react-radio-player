@@ -4,8 +4,8 @@ import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react';
 const VolumeControl = ({ volume, onVolumeChange }) => {
   const getVolumeIcon = () => {
     if (volume === 0) return <VolumeX size={20} />;
-    if (volume < 0.33) return <Volume size={20} />;
-    if (volume < 0.66) return <Volume1 size={20} />;
+    if (volume < 0.2) return <Volume size={20} />;
+    if (volume < 0.5) return <Volume1 size={20} />;
     return <Volume2 size={20} />;
   };
 
