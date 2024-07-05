@@ -33,11 +33,13 @@ A modern, responsive web radio player for Zeno.fm stations, built with React, Vi
 - StreamAfrica API for album art fetching
 - Media Session API for system-level media control integration
 
-## Setup and Installation
+## Setup and Running the Project
 
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Create a `.env` file in the root directory with the following content:
+1. Ensure you have Node.js installed on your machine
+2. Clone the repository
+3. Open a terminal in the project directory
+4. Run `npm install` to install dependencies
+5. Create a `.env` file in the root directory with the following content:
 
 ```env
 VITE_STREAM_URL=https://stream.zeno.fm/your_station_id
@@ -51,18 +53,8 @@ Replace `your_station_id` with the actual Zeno.fm station ID you want to use.
 > [!IMPORTANT]
 > The `.env` file is crucial for the application to function correctly. It contains the URLs for the audio stream, metadata updates, album art API, and a default album art image. Make sure to keep this file secure and do not commit it to version control.
 
-4. Run `npm run dev` to start the development server
-
-## Running the Project
-
-To run the project locally:
-
-1. Ensure you have Node.js installed on your machine
-2. Open a terminal in the project directory
-3. Run `npm install` to install all dependencies
-4. Create and configure the `.env` file as described above
-5. Run `npm run dev` to start the development server
-6. Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal)
+6. Run `npm run dev` to start the development server
+7. Open your browser and navigate to `http://localhost:5173` (or the port shown in your terminal)
 
 > [!TIP]
 > If you're having issues with the audio stream or metadata updates, double-check your Zeno.fm station ID in the `.env` file.
