@@ -81,6 +81,8 @@ const useAudioPlayer = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
+      audioRef.current.src = streamUrl;
+      audioRef.current.load();
       audioRef.current.play().catch(error => console.error('Playback failed:', error));
     }
     setIsPlaying(!isPlaying);
