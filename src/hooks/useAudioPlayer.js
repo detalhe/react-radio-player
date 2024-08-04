@@ -14,8 +14,9 @@ const useAudioPlayer = () => {
   const volumeRef = useRef(1);
 
   useEffect(() => {
-    audioRef.current = new Audio();
+    audioRef.current = new Audio(streamUrl);
     audioRef.current.volume = volumeRef.current;
+    audioRef.current.preload = 'auto';
     
     eventSourceRef.current = new EventSource(metadataUrl);
     
@@ -80,10 +81,7 @@ const useAudioPlayer = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      if (!audioRef.current.src) {
-        audioRef.current.src = streamUrl;
-      }
-      audioRef.current.play();
+      audioRef.current.play().catch(error => console.error('Playback failed:', error));
     }
     setIsPlaying(!isPlaying);
   }, [isPlaying]);
@@ -96,13 +94,20 @@ const useAudioPlayer = () => {
     }
   }, []);
 
+  const load = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  }, []);
+
   return {
     isPlaying,
     currentTrack,
     albumArt,
     volume,
     togglePlayPause,
-    handleVolumeChange
+    handleVolumeChange,
+    load
   };
 };
 

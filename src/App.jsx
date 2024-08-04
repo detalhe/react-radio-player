@@ -1,7 +1,12 @@
-import MusicPlayer from './components/MusicPlayer/MusicPlayer';
+import React, { Suspense } from 'react';
+const MusicPlayer = React.lazy(() => import('./components/MusicPlayer/MusicPlayer'));
 
 function App() {
-  return <MusicPlayer />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MusicPlayer />
+    </Suspense>
+  );
 }
 
 export default App;

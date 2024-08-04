@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Schedule from './Schedule';
 import NowPlaying from './NowPlaying';
@@ -22,8 +22,13 @@ const MusicPlayer = () => {
     volume,
     error,
     togglePlayPause,
-    handleVolumeChange
+    handleVolumeChange,
+    load
   } = useAudioPlayer();
+
+  useEffect(() => {
+    load();
+  }, [load]);
 
   if (isMobile) {
     return (
