@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react';
 
 const VolumeControl = ({ volume, onVolumeChange }) => {
@@ -28,6 +28,11 @@ const VolumeControl = ({ volume, onVolumeChange }) => {
       />
     </div>
   );
+};
+
+VolumeControl.propTypes = {
+  volume: PropTypes.number.isRequired,
+  onVolumeChange: PropTypes.func.isRequired,
 };
 
 export default VolumeControl;

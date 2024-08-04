@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Schedule from './Schedule';
 import NowPlaying from './NowPlaying';

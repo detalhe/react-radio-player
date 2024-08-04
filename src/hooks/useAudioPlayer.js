@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { fetchAlbumArt } from '../services/audioService';
 
 const streamUrl = import.meta.env.VITE_STREAM_URL;
@@ -11,10 +11,11 @@ const useAudioPlayer = () => {
   const [volume, setVolume] = useState(1);
   const audioRef = useRef(null);
   const eventSourceRef = useRef(null);
+  const volumeRef = useRef(1);
 
   useEffect(() => {
-    audioRef.current = new Audio(streamUrl);
-    audioRef.current.volume = volume;
+    audioRef.current = new Audio();
+    audioRef.current.volume = volumeRef.current;
     
     eventSourceRef.current = new EventSource(metadataUrl);
     
@@ -42,6 +43,7 @@ const useAudioPlayer = () => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
     }
+    volumeRef.current = volume;
   }, [volume]);
 
   useEffect(() => {
@@ -71,26 +73,28 @@ const useAudioPlayer = () => {
       });
     }
 
-    // Update document title
     document.title = `${currentTrack.title} - ${currentTrack.artist} | Radio`;
-
   }, [currentTrack, albumArt]);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = useCallback(() => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.src = streamUrl;
-      audioRef.current.load();
+      if (!audioRef.current.src) {
+        audioRef.current.src = streamUrl;
+      }
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
-  };
+  }, [isPlaying]);
 
-  const handleVolumeChange = (e) => {
+  const handleVolumeChange = useCallback((e) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
-  };
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  }, []);
 
   return {
     isPlaying,

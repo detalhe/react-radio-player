@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Music, Mic, Radio, Headphones, Guitar, Disc } from 'lucide-react';
 
 const scheduleData = [
@@ -22,20 +22,24 @@ const ScheduleItem = ({ genre, show, Icon }) => (
   </div>
 );
 
-const Schedule = () => {
-  return (
-    <div className="w-80 bg-[#121212] rounded-lg p-4 overflow-y-auto custom-scrollbar">
-      <h2 className="text-lg font-bold mb-3">Playing Today</h2>
-      {scheduleData.map((item, index) => (
-        <ScheduleItem 
-          key={index} 
-          genre={item.genre} 
-          show={item.show} 
-          Icon={item.icon}
-        />
-      ))}
-    </div>
-  );
+ScheduleItem.propTypes = {
+  genre: PropTypes.string.isRequired,
+  show: PropTypes.string.isRequired,
+  Icon: PropTypes.elementType.isRequired,
 };
+
+const Schedule = () => (
+  <div className="w-80 bg-[#121212] rounded-lg p-4 overflow-y-auto custom-scrollbar">
+    <h2 className="text-lg font-bold mb-3">Playing Today</h2>
+    {scheduleData.map((item, index) => (
+      <ScheduleItem 
+        key={index} 
+        genre={item.genre} 
+        show={item.show} 
+        Icon={item.icon}
+      />
+    ))}
+  </div>
+);
 
 export default Schedule;
